@@ -1,0 +1,8 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Algorithm description:</h1>
+    <p>Our URL Shortener algorithm uses the <a href="https://sqids.org/dotnet">Sqids</a> (prev. Hashids) library to generate short, unique, and human-friendly identifiers for URLs. Sqids works similarly to a decimal-to-hexadecimal converter but with additional features, such as encoding numbers into compact, non-sequential strings. To generate a short code, we first compute a SHA-256 hash of the given URL and extract a portion of the hash to obtain a numeric value. This number is then encoded using Sqids, ensuring that the resulting ID is short, readable, and URL-safe. While the generated IDs are deterministic based on the input, they are not easily guessable or sequential, making them suitable for link shortening.</p>
+</div>
