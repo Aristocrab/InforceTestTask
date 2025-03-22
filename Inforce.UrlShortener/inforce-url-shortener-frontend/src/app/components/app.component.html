@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <!-- Header -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <div class="row w-100 justify-content-between align-items-center">
+        <div class="col-6">
+          <a [routerLink]="'/'" class="navbar-brand">Inforce.UrlShortener</a>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+          @if (currentUser) {
+          <span class="d-inline-flex gap-2">
+            <span>Logged in as {{ currentUser.username }}</span>
+            <button (click)="logout()" class="btn btn-outline-danger my-2 my-sm-0">Logout</button>
+          </span>
+          }
+          @else {
+          <a [href]="apiUrl" class="btn btn-outline-success my-2 my-sm-0">Login</a>
+          }
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="row justify-content-center py-5">
+    <div class="col-md-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

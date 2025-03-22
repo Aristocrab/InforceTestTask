@@ -1,0 +1,32 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Original url</th>
+            <th scope="col">Short url</th>
+            <th scope="col" *ngIf="currentUser && (currentUser.role === 'Admin')">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (url of shortUrls; track url.id; let i = $index) {
+        <tr>
+            <td><a [routerLink]="`/url/${url.id}`">{{ url.id }}</a></td>
+            <td>{{ url.originalUrl }}</td>
+            <td><a href="{{apiUrl}}/{{ url.shortCode }}" target="_blank">{{apiUrl}}/{{ url.shortCode }}</a></td>
+            <td *ngIf="currentUser && (currentUser.role === 'Admin' || currentUser.id === url.createdBy.id)">
+                <button *ngIf="currentUser.role === 'Admin'" (click)="deleteUrl(url.id)">Delete</button>
+                <button *ngIf="currentUser.id === url.createdBy.id" (click)="deleteUrl(url.id)">Delete</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@if(currentUser) {
+<div>
+    <h1>Add new Url</h1>
+
+    <input type="text" class="form-control" placeholder="Enter the url" [(ngModel)]="newUrl" />
+    <button class="btn btn-primary" (click)="addUrl()">Add</button>
+</div>
+}

@@ -1,0 +1,13 @@
+@if(url)
+{
+<div class="url-info-container">
+  <h2>Short URL Details</h2>
+  <p><strong>Id:</strong> {{ url.id }}</p>
+  <p><strong>Original URL: </strong><a [href]="url.originalUrl" target="_blank">{{ url.originalUrl }}</a></p>
+  <p><strong>Short URL: </strong><a [href]="`${apiUrl}/${url.shortCode}`" target="_blank">{{ apiUrl }}/{{
+      url.shortCode
+      }}</a></p>
+  <p><strong>Created At: </strong>{{ url.createdDate | date: 'dd.MM.yyyy HH:mm' }}</p>
+  <p><strong>Created By: </strong>{{ url.createdBy.username }}</p>
+</div>
+}
